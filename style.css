@@ -1,0 +1,37 @@
+p {
+	margin: 0;
+}
+
+dialog:popover-open{
+	display: flex;
+	flex-direction: column;
+	padding: 1em;
+	border-radius: 1em;
+}
+
+dialog::backdrop{
+	background-color: #0000006e;
+}
+
+dialog div{
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	margin-bottom: 1em;
+	align-items: center;
+}
+
+dialog button {
+	margin-top: 1em;
+	margin: 0 auto;
+
+	padding: 0.5em;
+	padding-block: 0.3em;
+}
+
+
+.book{
+	border-left: solid;
+	padding-block: 0.2em;
+	padding-left: 0.5em;
+	margin-bottom: 1em;
+}

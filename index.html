@@ -1,13 +1,27 @@
 <!--Hello World-->
-<!DOCTYPE html>
+<!doctype html>
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta charset="utf-8" />
 		<title>Library</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="style.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
+		<div id="bookshelf"></div>
+		<button popovertarget="new-book-window">New Book</button>
+
+		<dialog id="new-book-window" popover="auto">
+			<div>
+				<p>Bookname:</p>
+				<input type="text" id="bookname" />
+			</div>
+			<div>
+				<p>Author:</p>
+				<input type="text" id="bookauthor" />
+			</div>
+			<button popovertarget="new-book-window" popovertargetaction="hide" id="add-new-book" >Add New Book!</button>
+		</dialog>
 
 		<script src="index.js" async defer></script>
 	</body>
