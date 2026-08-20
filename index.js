@@ -17,6 +17,23 @@ const bookColors = [
 	"#7287fd",
 ];
 
+const darkBookColors = [
+	"#f5e0dc",
+	"#f2cdcd",
+	"#f5c2e7",
+	"#cba6f7",
+	"#f38ba8",
+	"#eba0ac",
+	"#fab387",
+	"#f9e2af",
+	"#a6e3a1",
+	"#94e2d5",
+	"#89dceb",
+	"#74c7ec",
+	"#89b4fa",
+	"#b4befe",
+];
+
 const bookshelf = document.getElementById("bookshelf");
 
 function book(name, author) {
@@ -33,7 +50,7 @@ function book(name, author) {
 function addBookToLibrary(name, author) {
 	const bookObject = new book(name, author);
 	myLibrary.push(bookObject);
-	showBook(bookObject);
+	showBook(bookObject, myLibrary.indexOf(bookObject));
 }
 
 function showBook(bookObject) {
@@ -46,6 +63,7 @@ function showBook(bookObject) {
 	const removeButton = document.createElement("button");
 
 	paraName.textContent = bookObject.name;
+	paraName.style.color = darkBookColors[myLibrary.indexOf(bookObject) % darkBookColors.length];
 
 	paraAuthor.textContent = bookObject.author;
 
