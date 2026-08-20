@@ -17,6 +17,45 @@ body {
 	margin: 0;
 }
 
+#titleText {
+	text-align: center;
+	background: linear-gradient(90deg, rgba(23, 146, 153, 1) 0%, rgba(136, 57, 239, 1) 100%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+	-webkit-text-fill-color: transparent;
+}
+
+h1,
+h2 {
+	font-weight: 400;
+}
+
+h1 {
+	font-size: 5em;
+	margin: 0.2em;
+	margin-bottom: -0.2em;
+	margin-top: 0;
+}
+
+h2 {
+	font-size: 2em;
+	margin-top: 0;
+}
+
+#jannis {
+	background: linear-gradient(90deg, rgba(223, 142, 29, 1) -100%, rgba(234, 118, 203, 1) 200%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+	-webkit-text-fill-color: transparent;
+}
+
+a {
+	font-style: none;
+	text-decoration: none;
+}
+
 p {
 	margin: 0;
 }
