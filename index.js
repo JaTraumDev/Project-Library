@@ -53,6 +53,16 @@ function addBookToLibrary(name, author) {
 	showBook(bookObject, myLibrary.indexOf(bookObject));
 }
 
+function updateBookColors(library) {
+	library.forEach((book, index) => {
+		const bookElement = document.getElementById(book.id);
+		if (bookElement) {
+			const nameElement = bookElement.querySelector("h3");
+			nameElement.style.color = bookColors[index % bookColors.length];
+		}
+	});
+}
+
 function showBook(bookObject) {
 	const bookPlace = document.createElement("div");
 	bookPlace.className = "book";
@@ -67,9 +77,10 @@ function showBook(bookObject) {
 
 	paraAuthor.textContent = bookObject.author;
 
-	removeButton.addEventListener("click", (evt) => {
+	removeButton.addEventListener("click", () => {
 		myLibrary.splice(myLibrary.indexOf(bookObject), 1);
 		bookPlace.remove();
+		updateBookColors(myLibrary);
 	});
 
 	removeButton.textContent = "Remove";
