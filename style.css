@@ -28,6 +28,9 @@ h3 {
 }
 
 button {
+	font-family: "Bebas Neue";
+	font-weight: 300;
+	font-size: 0.7em;
 	padding: 0.5em;
 	background-color: #11111b;
 	color: #cdd6f4;
