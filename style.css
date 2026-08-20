@@ -106,7 +106,8 @@ dialog input {
 
 .book {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr auto;
+	grid-template-rows: 1fr auto;
 	grid-auto-rows: 1fr;
 	grid-template-areas: "bookName button" "paragraph button";
 
@@ -121,4 +122,9 @@ dialog input {
 	grid-area: button;
 	justify-self: right;
 	align-self: center;
+}
+
+.book > p,
+.book > h3 {
+	padding-right: 1em;
 }
