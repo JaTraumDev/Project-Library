@@ -23,9 +23,10 @@ function showBook(bookObject) {
 	const bookPlace = document.createElement("div");
 	bookPlace.className = "book";
 
-	const paraName = document.createElement("p");
+	const paraName = document.createElement("h3");
 	const paraAuthor = document.createElement("p");
 	const paraID = document.createElement("p");
+	const removeButton = document.createElement("button");
 
 	paraName.textContent = bookObject.name;
 
@@ -33,9 +34,11 @@ function showBook(bookObject) {
 
 	paraID.textContent = bookObject.id;
 
+	removeButton.textContent = "Remove";
+
 	bookPlace.appendChild(paraName);
 	bookPlace.appendChild(paraAuthor);
-	bookPlace.appendChild(paraID);
+	bookPlace.appendChild(removeButton);
 
 	bookshelf.appendChild(bookPlace);
 }
@@ -52,8 +55,7 @@ newBookButton.addEventListener("click", (evt) => {
 	const bookAuthor = document.getElementById("bookauthor");
 	if (bookName.value != "" && bookAuthor.value != "") {
 		addBookToLibrary(bookName.value, bookAuthor.value);
-		bookName.value = ''
-		bookAuthor.value = ''
+		bookName.value = "";
+		bookAuthor.value = "";
 	}
-
 });

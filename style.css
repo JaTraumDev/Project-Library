@@ -1,19 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+body {
+	font-size: 1.5em;
+	max-width: 1440px;
+	margin: 0 auto;
+	margin-top: 1em;
+}
+
 p {
 	margin: 0;
 }
 
-dialog:popover-open{
+h3 {
+	font-weight: 400;
+	margin: 0;
+	grid-area: bookName;
+}
+
+.book > p {
+	grid-area: paragraph;
+}
+
+dialog:popover-open {
 	display: flex;
 	flex-direction: column;
 	padding: 1em;
 	border-radius: 1em;
 }
 
-dialog::backdrop{
+dialog::backdrop {
 	background-color: #0000006e;
 }
 
-dialog div{
+dialog div {
 	display: grid;
 	grid-template-columns: 1fr 2fr;
 	margin-bottom: 1em;
@@ -28,10 +47,19 @@ dialog button {
 	padding-block: 0.3em;
 }
 
+.book {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-auto-rows: 1fr;
+	grid-template-areas: "bookName button" "paragraph button";
 
-.book{
 	border-left: solid;
 	padding-block: 0.2em;
 	padding-left: 0.5em;
 	margin-bottom: 1em;
+}
+
+.book > button {
+	grid-area: button;
+	margin: 0 auto;
 }
