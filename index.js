@@ -22,17 +22,15 @@ function addBookToLibrary(name, author) {
 function showBook(bookObject) {
 	const bookPlace = document.createElement("div");
 	bookPlace.className = "book";
+	bookPlace.setAttribute("id", `${bookObject.id}`);
 
 	const paraName = document.createElement("h3");
 	const paraAuthor = document.createElement("p");
-	const paraID = document.createElement("p");
 	const removeButton = document.createElement("button");
 
 	paraName.textContent = bookObject.name;
 
 	paraAuthor.textContent = bookObject.author;
-
-	paraID.textContent = bookObject.id;
 
 	removeButton.textContent = "Remove";
 
