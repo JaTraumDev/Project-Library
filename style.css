@@ -29,6 +29,14 @@ h3 {
 
 button {
 	padding: 0.5em;
+	background-color: #11111b;
+	color: #cdd6f4;
+	border-radius: 0.75em;
+	border-style: solid;
+}
+
+body > button {
+	border-color: #a6e3a1;
 }
 
 .book {
@@ -37,6 +45,10 @@ button {
 
 .book > p {
 	grid-area: paragraph;
+}
+
+.book > button {
+	border-color: #f38ba8;
 }
 
 dialog:popover-open {
