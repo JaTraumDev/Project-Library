@@ -7,7 +7,14 @@ html {
 	font-size: 1.5em;
 	max-width: 1440px;
 	margin: 0 auto;
-	margin-top: 1em;
+}
+
+body {
+	padding-top: 1em;
+	padding-inline: 1em;
+	background-color: #1e1e2e;
+	min-height: 100vh;
+	margin: 0;
 }
 
 p {
@@ -22,6 +29,10 @@ h3 {
 
 button {
 	padding: 0.5em;
+}
+
+.book {
+	background-color: #181825;
 }
 
 .book > p {

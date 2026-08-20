@@ -63,7 +63,7 @@ function showBook(bookObject) {
 	const removeButton = document.createElement("button");
 
 	paraName.textContent = bookObject.name;
-	paraName.style.color = darkBookColors[myLibrary.indexOf(bookObject) % darkBookColors.length];
+	paraName.style.color = bookColors[myLibrary.indexOf(bookObject) % darkBookColors.length];
 
 	paraAuthor.textContent = bookObject.author;
 
