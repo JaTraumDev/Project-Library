@@ -42,18 +42,6 @@ body > button {
 	border-color: #a6e3a1;
 }
 
-.book {
-	background-color: #181825;
-}
-
-.book > p {
-	grid-area: paragraph;
-}
-
-.book > button {
-	border-color: #f38ba8;
-}
-
 dialog:popover-open {
 	background-color: #1e1e2e;
 	border-color: #cdd6f4;
@@ -105,11 +93,11 @@ dialog input {
 }
 
 .book {
+	background-color: #181825;
 	display: grid;
 	grid-template-columns: 1fr auto;
-	grid-template-rows: 1fr auto;
-	grid-auto-rows: 1fr;
-	grid-template-areas: "bookName button" "paragraph button";
+	grid-template-rows: 1fr 1fr auto;
+	grid-template-areas: "bookName button" "paragraph button" "checkbox button";
 
 	border-left: solid;
 	border-radius: 0 0.2em 0.2em 0;
@@ -127,4 +115,19 @@ dialog input {
 .book > p,
 .book > h3 {
 	padding-right: 1em;
+}
+
+.book > p {
+	grid-area: paragraph;
+	margin: 0;
+}
+
+.book > button {
+	border-color: #f38ba8;
+}
+
+.book > .checkbox {
+	grid-area: checkbox;
+	font-size: 0.9em;
+	margin-top: -0.1em;
 }

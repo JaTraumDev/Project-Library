@@ -36,19 +36,21 @@ const darkBookColors = [
 
 const bookshelf = document.getElementById("bookshelf");
 
-function book(name, author) {
+function book(name, author, read) {
 	this.name = name;
 	this.author = author;
 	this.id = crypto.randomUUID();
+	this.read = read;
 	this.displayInfo = function () {
 		console.log(`Name: ${this.name}`);
 		console.log(`Author: ${this.author}`);
+		console.log(`Read?: ${this.read}`);
 		console.log(`id: ${this.id}`);
 	};
 }
 
-function addBookToLibrary(name, author) {
-	const bookObject = new book(name, author);
+function addBookToLibrary(name, author, read) {
+	const bookObject = new book(name, author, read);
 	myLibrary.push(bookObject);
 	showBook(bookObject, myLibrary.indexOf(bookObject));
 }
@@ -70,12 +72,34 @@ function showBook(bookObject) {
 
 	const paraName = document.createElement("h3");
 	const paraAuthor = document.createElement("p");
+	const readText = document.createElement("p");
+	const readCheck = document.createElement("input");
 	const removeButton = document.createElement("button");
 
 	paraName.textContent = bookObject.name;
 	paraName.style.color = bookColors[myLibrary.indexOf(bookObject) % bookColors.length];
 
 	paraAuthor.textContent = bookObject.author;
+
+	readCheck.type = "checkbox";
+	if (bookObject.read === true) {
+		readCheck.checked = true;
+	}
+	readCheck.addEventListener("click", () => {
+		let checked = readCheck.checked;
+		if (checked === true) {
+			readCheck.checked = true;
+			bookObject.read = true;
+		} else {
+			readCheck.checked = false;
+			bookObject.read = false;
+		}
+		bookObject.displayInfo();
+	});
+
+	readText.textContent = "Read?";
+	readText.className = "checkbox";
+	readText.appendChild(readCheck);
 
 	removeButton.addEventListener("click", () => {
 		myLibrary.splice(myLibrary.indexOf(bookObject), 1);
@@ -87,14 +111,15 @@ function showBook(bookObject) {
 
 	bookPlace.appendChild(paraName);
 	bookPlace.appendChild(paraAuthor);
+	bookPlace.appendChild(readText);
 	bookPlace.appendChild(removeButton);
 
 	bookshelf.appendChild(bookPlace);
 }
 
-addBookToLibrary("Dynamite", "James Sunderland");
-addBookToLibrary("I Have No Mouth, and I Must Scream", "Harlan Ellison");
-addBookToLibrary("Fifty Shades of Grey", "E.L. James");
+addBookToLibrary("Dynamite", "James Sunderland", false);
+addBookToLibrary("I Have No Mouth, and I Must Scream", "Harlan Ellison", true);
+addBookToLibrary("Fifty Shades of Grey", "E.L. James", false);
 
 const newBookButton = document.querySelector("#add-new-book");
 const newBookWindow = document.querySelector("#new-book-window");
