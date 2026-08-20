@@ -83,7 +83,8 @@ dialog button {
 	grid-auto-rows: 1fr;
 	grid-template-areas: "bookName button" "paragraph button";
 
-	border-inline: solid;
+	border-left: solid;
+	border-radius: 0 0.2em 0.2em 0;
 	padding-block: 0.3em;
 	padding-inline: 0.5em;
 	margin-bottom: 1em;
