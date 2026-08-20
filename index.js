@@ -124,7 +124,7 @@ addBookToLibrary("Fifty Shades of Grey", "E.L. James", false);
 const newBookButton = document.querySelector("#add-new-book");
 const newBookWindow = document.querySelector("#new-book-window");
 
-newBookButton.addEventListener("click", (evt) => {
+newBookButton.addEventListener("click", () => {
 	const bookName = document.getElementById("bookname");
 	const bookAuthor = document.getElementById("bookauthor");
 	if (bookName.value != "" && bookAuthor.value != "") {
