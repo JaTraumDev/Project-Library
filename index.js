@@ -1,5 +1,3 @@
-const myLibrary = [];
-
 const bookColors = [
 	"#dc8a78",
 	"#dd7878",
@@ -36,7 +34,7 @@ const darkBookColors = [
 
 const bookshelf = document.getElementById("bookshelf");
 
-class book {
+class Book {
 	constructor(name, author, read) {
 		this.name = name;
 		this.author = author;
@@ -51,23 +49,28 @@ class book {
 	}
 }
 
-function addBookToLibrary(name, author, read) {
-	const bookObject = new book(name, author, read);
-	myLibrary.push(bookObject);
-	showBook(bookObject, myLibrary.indexOf(bookObject));
+class Library {
+	gallery = [];
+	addBookToLibrary(name, author, read = false) {
+		const bookObject = new Book(name, author, read);
+		this.gallery.push(bookObject);
+		showBook(bookObject, this);
+	}
+	removeBookFromLibrary(book) {
+		this.gallery.splice(this.gallery.indexOf(book), 1);
+	}
+	updateBookColors() {
+		this.gallery.forEach((book, index) => {
+			const bookElement = document.getElementById(book.id);
+			if (bookElement) {
+				const nameElement = bookElement.querySelector("h3");
+				nameElement.style.color = bookColors[index % bookColors.length];
+			}
+		});
+	}
 }
 
-function updateBookColors(library) {
-	library.forEach((book, index) => {
-		const bookElement = document.getElementById(book.id);
-		if (bookElement) {
-			const nameElement = bookElement.querySelector("h3");
-			nameElement.style.color = bookColors[index % bookColors.length];
-		}
-	});
-}
-
-function showBook(bookObject) {
+function showBook(bookObject, library) {
 	const bookPlace = document.createElement("div");
 	bookPlace.className = "book";
 	bookPlace.setAttribute("id", `${bookObject.id}`);
@@ -79,7 +82,7 @@ function showBook(bookObject) {
 	const removeButton = document.createElement("button");
 
 	paraName.textContent = bookObject.name;
-	paraName.style.color = bookColors[myLibrary.indexOf(bookObject) % bookColors.length];
+	paraName.style.color = bookColors[library.gallery.indexOf(bookObject) % bookColors.length];
 
 	paraAuthor.textContent = bookObject.author;
 
@@ -104,9 +107,9 @@ function showBook(bookObject) {
 	readText.appendChild(readCheck);
 
 	removeButton.addEventListener("click", () => {
-		myLibrary.splice(myLibrary.indexOf(bookObject), 1);
+		library.removeBookFromLibrary(bookObject);
 		bookPlace.remove();
-		updateBookColors(myLibrary);
+		library.updateBookColors();
 	});
 
 	removeButton.textContent = "Remove";
@@ -119,9 +122,11 @@ function showBook(bookObject) {
 	bookshelf.appendChild(bookPlace);
 }
 
-addBookToLibrary("Dynamite", "James Sunderland", false);
-addBookToLibrary("I Have No Mouth, and I Must Scream", "Harlan Ellison", true);
-addBookToLibrary("Fifty Shades of Grey", "E.L. James", false);
+const library = new Library();
+
+library.addBookToLibrary("Dynamite", "James Sunderland", false);
+library.addBookToLibrary("I Have No Mouth, and I Must Scream", "Harlan Ellison", true);
+library.addBookToLibrary("Fifty Shades of Grey", "E.L. James", false);
 
 const newBookButton = document.querySelector("#add-new-book");
 const newBookWindow = document.querySelector("#new-book-window");
@@ -130,7 +135,7 @@ newBookButton.addEventListener("click", () => {
 	const bookName = document.getElementById("bookname");
 	const bookAuthor = document.getElementById("bookauthor");
 	if (bookName.value != "" && bookAuthor.value != "") {
-		addBookToLibrary(bookName.value, bookAuthor.value);
+		library.addBookToLibrary(bookName.value, bookAuthor.value);
 		bookName.value = "";
 		bookAuthor.value = "";
 	}
