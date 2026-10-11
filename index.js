@@ -36,17 +36,19 @@ const darkBookColors = [
 
 const bookshelf = document.getElementById("bookshelf");
 
-function book(name, author, read) {
-	this.name = name;
-	this.author = author;
-	this.id = crypto.randomUUID();
-	this.read = read;
-	this.displayInfo = function () {
+class book {
+	constructor(name, author, read) {
+		this.name = name;
+		this.author = author;
+		this.id = crypto.randomUUID();
+		this.read = read;
+	}
+	displayInfo() {
 		console.log(`Name: ${this.name}`);
 		console.log(`Author: ${this.author}`);
 		console.log(`Read?: ${this.read}`);
 		console.log(`id: ${this.id}`);
-	};
+	}
 }
 
 function addBookToLibrary(name, author, read) {
