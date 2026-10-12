@@ -62,8 +62,11 @@ class Library {
 	removeBookFromLibrary(book) {
 		this.gallery.splice(this.gallery.indexOf(book), 1);
 	}
-	updateBookColors() {
-		this.gallery.forEach((book, index) => {
+}
+
+function display(bookObject, library) {
+	function updateBookColors() {
+		library.gallery.forEach((book, index) => {
 			const bookElement = document.getElementById(book.id);
 			if (bookElement) {
 				const nameElement = bookElement.querySelector("h3");
@@ -71,9 +74,6 @@ class Library {
 			}
 		});
 	}
-}
-
-function display(bookObject, library) {
 	const bookPlace = document.createElement("div");
 	bookPlace.className = "book";
 	bookPlace.setAttribute("id", `${bookObject.id}`);
@@ -103,7 +103,7 @@ function display(bookObject, library) {
 	removeButton.addEventListener("click", () => {
 		library.removeBookFromLibrary(bookObject);
 		bookPlace.remove();
-		library.updateBookColors();
+		updateBookColors();
 	});
 
 	removeButton.textContent = "Remove";
@@ -181,7 +181,7 @@ newBookButton.addEventListener("click", () => {
 	const bookName = document.getElementById("bookname");
 	const bookAuthor = document.getElementById("bookauthor");
 	if (bookName.value != "" && bookAuthor.value != "") {
-		library.addBookToLibrary(bookName.value, bookAuthor.value);
+		display(library.addBookToLibrary(bookName.value, bookAuthor.value), library);
 		bookName.value = "";
 		bookAuthor.value = "";
 	}
