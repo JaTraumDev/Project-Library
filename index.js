@@ -90,6 +90,7 @@ function display(bookObject, library) {
 	paraAuthor.textContent = bookObject.author;
 
 	readCheck.type = "checkbox";
+	readCheck.checked = bookObject.read;
 
 	readCheck.addEventListener("click", () => {
 		bookObject.toggleChecked();
