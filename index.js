@@ -47,6 +47,9 @@ class Book {
 		console.log(`Read?: ${this.read}`);
 		console.log(`id: ${this.id}`);
 	}
+	toggleChecked() {
+		this.read = !this.read;
+	}
 }
 
 class Library {
@@ -87,18 +90,9 @@ function display(bookObject, library) {
 	paraAuthor.textContent = bookObject.author;
 
 	readCheck.type = "checkbox";
-	if (bookObject.read === true) {
-		readCheck.checked = true;
-	}
+
 	readCheck.addEventListener("click", () => {
-		let checked = readCheck.checked;
-		if (checked === true) {
-			readCheck.checked = true;
-			bookObject.read = true;
-		} else {
-			readCheck.checked = false;
-			bookObject.read = false;
-		}
+		bookObject.toggleChecked();
 		bookObject.displayInfo();
 	});
 
