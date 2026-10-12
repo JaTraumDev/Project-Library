@@ -116,58 +116,6 @@ function display(bookObject, library) {
 	bookshelf.appendChild(bookPlace);
 }
 
-// function showBook(bookObject, library) {
-// const bookPlace = document.createElement("div");
-// bookPlace.className = "book";
-// bookPlace.setAttribute("id", `${bookObject.id}`);
-
-// const paraName = document.createElement("h3");
-// const paraAuthor = document.createElement("p");
-// const readText = document.createElement("p");
-// const readCheck = document.createElement("input");
-// const removeButton = document.createElement("button");
-
-// paraName.textContent = bookObject.name;
-// paraName.style.color = bookColors[library.gallery.indexOf(bookObject) % bookColors.length];
-
-// paraAuthor.textContent = bookObject.author;
-
-// readCheck.type = "checkbox";
-// if (bookObject.read === true) {
-// 	readCheck.checked = true;
-// }
-// readCheck.addEventListener("click", () => {
-// 	let checked = readCheck.checked;
-// 	if (checked === true) {
-// 		readCheck.checked = true;
-// 		bookObject.read = true;
-// 	} else {
-// 		readCheck.checked = false;
-// 		bookObject.read = false;
-// 	}
-// 	bookObject.displayInfo();
-// });
-
-// readText.textContent = "Read?";
-// readText.className = "checkbox";
-// readText.appendChild(readCheck);
-
-// removeButton.addEventListener("click", () => {
-// 	library.removeBookFromLibrary(bookObject);
-// 	bookPlace.remove();
-// 	library.updateBookColors();
-// });
-
-// removeButton.textContent = "Remove";
-
-// bookPlace.appendChild(paraName);
-// bookPlace.appendChild(paraAuthor);
-// bookPlace.appendChild(readText);
-// bookPlace.appendChild(removeButton);
-
-// bookshelf.appendChild(bookPlace);
-// }
-
 const library = new Library();
 
 display(library.addBookToLibrary("Dynamite", "James Sunderland", false), library);
