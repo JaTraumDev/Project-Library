@@ -60,7 +60,11 @@ class Library {
 		return bookObject;
 	}
 	removeBookFromLibrary(book) {
-		this.gallery.splice(this.gallery.indexOf(book), 1);
+		const index = this.gallery.indexOf(book);
+
+		if (index !== -1) {
+			this.gallery.splice(index, 1);
+		}
 	}
 }
 
